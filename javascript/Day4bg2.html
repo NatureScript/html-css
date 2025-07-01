@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฝึกหัดเปลี่ยนสีพื้นหลัง</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column; /* จัดเรียงองค์ประกอบในแนวตั้ง (หัวข้อด้านบน ปุ่มด้านล่าง) */
+            justify-content: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+            align-items: center; /* จัดให้อยู่กึ่งกลางแนวนอน */
+            min-height: 100vh; /* ทำให้ body สูงเต็มหน้าจอ */
+            margin: 0;
+            background-color: #f0f0f0; /* สีพื้นหลังเริ่มต้นของหน้าเว็บ */
+            transition: background-color 0.4s ease; /* เพิ่ม transition ให้การเปลี่ยนสีพื้นหลังหน้าเว็บนุ่มนวล */
+            color: #333; /* สีตัวอักษรเริ่มต้นของหน้าเว็บ (สำหรับข้อความอื่นๆ ที่ไม่ได้กำหนดเฉพาะ) */
+        }
+
+        .main-title {
+            font-size: 2.2em; /* ขนาดตัวอักษรหัวข้อ */
+            margin-bottom: 30px; /* ระยะห่างจากหัวข้อถึงปุ่ม */
+            color: black; /* กำหนดให้เป็นสีดำตลอดไป */
+            font-weight: bold;
+        }
+
+        .button-row {
+            display: flex; /* ใช้ flexbox เพื่อเรียงปุ่มแนวนอน */
+            gap: 20px; /* ระยะห่างระหว่างปุ่ม */
+            padding: 20px; /* เพิ่ม padding รอบปุ่มเล็กน้อย */
+        }
+
+        .color-button {
+            padding: 10px 25px;
+            border: 2px solid #333; /* กรอบสี่เหลี่ยมของปุ่มแต่ละปุ่ม */
+            border-radius: 10px; /* ขอบมนของปุ่ม */
+            font-size: 1.1em;
+            cursor: pointer;
+            background-color: #e0e0e0; /* สีพื้นหลังเริ่มต้นของปุ่ม */
+            color: #333; /* สีตัวอักษรเริ่มต้นของปุ่ม ให้เป็นสีเทาเข้มตลอด*/
+            transition: background-color 0.3s ease, border-color 0.3s ease; /* transition สำหรับพื้นหลังและกรอบปุ่ม */
+            font-weight: bold;
+        }
+
+        .color-button:hover {
+            background-color: #d0d0d0; /* สีพื้นหลังปุ่มเมื่อ hover (ไม่ซ้ำกับสีเพจ) */
+            border-color: #666; /* สีกรอบปุ่มเมื่อ hover */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 class="main-title">แบบฝึกหัดเปลี่ยนสีพื้นหลัง</h1>
+
+    <div class="button-row">
+        <button class="color-button" data-color="red">Red</button>
+        <button class="color-button" data-color="green">Green</button>
+        <button class="color-button" data-color="blue">Blue</button>
+        <button class="color-button" data-color="white">White</button>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.color-button');
+        const body = document.body; // อ้างอิงถึง element body ของหน้าเว็บ
+
+        buttons.forEach(button => {
+            const color = button.dataset.color; // ดึงชื่อสีจาก data-color
+
+            button.addEventListener('mouseover', () => {
+                body.style.backgroundColor = color; // เปลี่ยนสีพื้นหลังของ BODY ทั้งหมด
+                
+                // **ลบโค้ดส่วนที่เปลี่ยนสีตัวอักษรและกรอบของปุ่มออกแล้ว**
+                // ดังนั้นสีตัวอักษรและกรอบปุ่มจะคงที่ตาม CSS
+            });
+
+            button.addEventListener('mouseout', () => {
+                // คืนค่าสีพื้นหลังของ BODY กลับเป็นสีเริ่มต้น
+                body.style.backgroundColor = '#f0f0f0'; 
+                
+                // **ลบโค้ดส่วนที่คืนค่าสีตัวอักษรและกรอบของปุ่มออกแล้ว**
+                // ดังนั้นสีตัวอักษรและกรอบปุ่มจะคงที่ตาม CSS
+                button.style.backgroundColor = '#e0e0e0'; /* คืนสีพื้นหลังปุ่มเองเมื่อเมาส์ออกจากปุ่ม */
+            });
+        });
+    </script>
+</body>
+</html>

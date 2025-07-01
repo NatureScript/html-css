@@ -1,1 +1,62 @@
-<h1>Hello Git!</h1>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Web Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <p>This is a simple paragraph with some <strong>bold text</strong> and <em>italic text</em>.</p>
+
+    <h2>My Favorite Fruits</h2>
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+    </ul>
+
+    <h2>Important Links</h2>
+    <ol>
+        <li><a href="https://www.google.com" target="_blank">Google</a></li>
+        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+    </ol>
+
+    <img src="https://via.placeholder.com/100" alt="Placeholder Image" width="100" height="100">
+
+    <h3>Contact Form</h3>
+    <form>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+
+    <button onclick="showAlert()">Click Me</button>
+
+    <script>
+        function showAlert() {
+            alert("Button Clicked!");
+        }
+    </script>
+</body>
+</html>

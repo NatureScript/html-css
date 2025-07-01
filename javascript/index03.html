@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจสอบอายุเข้าเรียนมหาวิทยาลัย</title>
+</head>
+<body>
+
+    <h1>ตรวจสอบอายุเข้าเรียนมหาวิทยาลัย</h1>
+    <p id="result-message"></p>
+
+    <script>
+        // รับค่าอายุจากผู้ใช้
+        const ageInput = prompt("กรุณากรอกอายุของคุณ:");
+
+        // แปลงค่าที่รับมาเป็นตัวเลข (prompt() จะคืนค่าเป็น String)
+        const age = parseInt(ageInput); // parseInt() แปลง String เป็น Integer
+
+        let message = ""; // ตัวแปรสำหรับเก็บข้อความผลลัพธ์
+
+        // ตรวจสอบเงื่อนไข
+        if (isNaN(age)) { // isNaN() ตรวจสอบว่าค่าที่แปลงมาเป็นตัวเลขหรือไม่ (กรณีผู้ใช้กรอกข้อความที่ไม่ใช่ตัวเลข)
+            message = "กรุณากรอกอายุเป็นตัวเลขที่ถูกต้อง";
+        } else if (age < 0) {
+            message = "อายุไม่สามารถติดลบได้";
+        } else if (age > 120) {
+            message = "อายุไม่สามารถเกิน 120 ปีได้";
+        } else if (age >= 18) {
+            message = "เข้าได้";
+        } else { // age < 18
+            message = "เข้าไม่ได้";
+        }
+
+        // แสดงผลลัพธ์ใน Console
+        console.log("อายุที่กรอก:", ageInput);
+        console.log("ผลการตรวจสอบ:", message);
+
+        // แสดงผลลัพธ์บนหน้าเว็บ
+        const resultElement = document.getElementById('result-message');
+        resultElement.textContent = message;
+
+    </script>
+</body>
+</html>

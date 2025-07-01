@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p class="header">หัวข้อ1</p>
+    <p class="header">หัวข้อ2</p>
+
+    <script>
+        const headers = document.getElementsByClassName('header'); // แก้ไข getElementsyByClassName -> getElementsByClassName
+        //head.style.color = 'blue';
+        //foor loop ในการจัดการกับ elements ใน className
+
+        // for(let i = 0; i < headers.length; i++) { headers[i].style.color = 'blue'; // แก้ไข header.leanght -> headers.length
+        // }
+        // forEach 
+        Array.from(headers).forEach(element => { // แก้ไข foreach -> forEach
+            element.style.color = 'blue';
+        });
+
+        console.log(headers); // บรรทัดนี้จะทำงานใน Console ของเบราว์เซอร์
+    </script>
+</body>
+</html>

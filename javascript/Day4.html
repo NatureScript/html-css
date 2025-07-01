@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Example</title>
+    <style>
+        /* CSS เพิ่มเติมเพื่อให้มีพื้นหลังสีแดงตามภาพ */
+        .card-container {
+            background-color: red;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+    </div>
+
+    <script>
+        // เลือก element ทั้งหมดที่มี class เป็น 'card'
+        const cards = document.querySelectorAll('.card');
+
+        // ตัวอย่างการเปลี่ยนสีข้อความของแต่ละ Card เป็นสีขาว (หรือสีอื่นๆ)
+        cards.forEach(card => {
+            card.style.color = 'black'; // เพื่อให้เห็นข้อความบนพื้นหลังสีแดง
+            // หรือคุณอาจจะทำอย่างอื่น เช่น เพิ่ม event listener
+        });
+
+        console.log(cards); // จะแสดง NodeList(3) [div.card, div.card, div.card] ใน Console
+    </script>
+</body>
+</html>

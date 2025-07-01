@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แสดงผลลัพธ์บนหน้าเว็บ</title>
+</head>
+<body>
+    <h1>ผลลัพธ์จากการกรอกข้อมูล:</h1>
+    <p id="output-area"></p> 
+    
+    <script>
+        const input = prompt("กรอกข้อมูลตรงนี้:"); // แสดง prompt ให้กรอกข้อมูล
+
+        // ตรวจสอบว่าผู้ใช้กรอกข้อมูลหรือไม่ (ไม่ได้กด Cancel)
+        if (input !== null) {
+            // แสดงผลลัพธ์ใน Console (เหมือนเดิม)
+            console.log('ผลลัพธ์ใน Console:', input);
+            console.log(234);
+
+            // แสดงผลลัพธ์บนหน้าเว็บ
+            const outputElement = document.getElementById('output-area'); // เข้าถึงแท็ก p ด้วย id
+            outputElement.textContent = "คุณกรอก: " + input; // กำหนดข้อความให้กับแท็ก p
+        } else {
+            // ถ้าผู้ใช้กด Cancel
+            console.log('ผู้ใช้ยกเลิกการกรอกข้อมูล');
+            const outputElement = document.getElementById('output-area');
+            outputElement.textContent = "การกรอกข้อมูลถูกยกเลิก";
+        }
+    </script>
+
+    </body>
+</html>

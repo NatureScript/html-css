@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เปลี่ยนพื้นหลังเพจเมื่อ Hover ปุ่ม</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* สีพื้นหลังเริ่มต้นของหน้าเว็บ */
+            transition: background-color 0.4s ease; /* เพิ่ม transition ให้การเปลี่ยนสีพื้นหลังหน้าเว็บนุ่มนวล */
+        }
+
+        .button-row {
+            display: flex; /* ใช้ flexbox เพื่อเรียงปุ่มแนวนอน */
+            gap: 20px; /* ระยะห่างระหว่างปุ่ม */
+            padding: 20px; /* เพิ่ม padding รอบปุ่มเล็กน้อย */
+        }
+
+        .color-button {
+            padding: 10px 25px;
+            border: 2px solid #333; /* กรอบสี่เหลี่ยมของปุ่มแต่ละปุ่ม */
+            border-radius: 10px; /* ขอบมนของปุ่ม */
+            font-size: 1.1em;
+            cursor: pointer;
+            background-color: #e0e0e0; /* สีพื้นหลังเริ่มต้นของปุ่ม */
+            color: #333; /* สีตัวอักษรเริ่มต้น */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* transition สำหรับปุ่ม */
+            font-weight: bold;
+        }
+
+        /* เมื่อเมาส์ Hover บนปุ่ม ตัวปุ่มเองอาจจะเปลี่ยนสีหรือคงเดิมก็ได้ (ตอนนี้จะเปลี่ยนเฉพาะพื้นหลังเพจ) */
+        /* ถ้าอยากให้ปุ่มเปลี่ยนสีเล็กน้อยเมื่อ hover */
+        .color-button:hover {
+            background-color: #d0d0d0; /* สีพื้นหลังปุ่มเมื่อ hover (ไม่ซ้ำกับสีเพจ) */
+            border-color: #666;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="button-row">
+        <button class="color-button" data-color="red">Red</button>
+        <button class="color-button" data-color="green">Green</button>
+        <button class="color-button" data-color="blue">Blue</button>
+        <button class="color-button" data-color="white">White</button>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.color-button');
+        const body = document.body; // อ้างอิงถึง element body ของหน้าเว็บ
+
+        buttons.forEach(button => {
+            const color = button.dataset.color; // ดึงชื่อสีจาก data-color
+
+            button.addEventListener('mouseover', () => {
+                body.style.backgroundColor = color; // เปลี่ยนสีพื้นหลังของ BODY ทั้งหมด
+                
+                // ปรับสีตัวอักษรของปุ่มให้เหมาะสมกับสีพื้นหลังเพจที่เปลี่ยนไป
+                // เพื่อให้ปุ่มยังคงมองเห็นได้ชัดเจน
+                if (color === 'red' || color === 'blue') {
+                    // หากพื้นหลังเป็นสีเข้ม (แดง, น้ำเงิน) ให้ตัวอักษรปุ่มเป็นสีขาว
+                    button.style.color = 'white'; 
+                    button.style.borderColor = 'white'; // กรอบปุ่มก็เป็นสีขาว
+                } else if (color === 'green') {
+                    // สีเขียว
+                     button.style.color = 'yellow'; // อาจจะใช้เหลืองเพื่อให้ตัดกัน
+                     button.style.borderColor = 'yellow';
+                } else if (color === 'white') {
+                    // หากพื้นหลังเป็นสีขาว ให้ตัวอักษรปุ่มเป็นสีดำหรือสีเข้ม
+                    button.style.color = 'black'; 
+                    button.style.borderColor = '#333'; // กรอบปุ่มกลับเป็นสีเข้ม
+                }
+            });
+
+            button.addEventListener('mouseout', () => {
+                // คืนค่าสีพื้นหลังของ BODY กลับเป็นสีเริ่มต้น
+                body.style.backgroundColor = '#f0f0f0'; 
+                
+                // คืนค่าสีตัวอักษรและกรอบของปุ่มกลับเป็นค่าเริ่มต้น
+                button.style.color = '#333'; 
+                button.style.borderColor = '#333';
+                button.style.backgroundColor = '#e0e0e0'; /* คืนสีพื้นหลังปุ่มเอง */
+            });
+        });
+    </script>
+</body>
+</html>

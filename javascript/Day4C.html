@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Display (Simple Console)</title>
+    <style>
+        .full-red-strip {
+            background-color: red;
+            padding: 15px 0;
+        }
+        .full-red-strip .card-text {
+            color: black;
+            font-size: 20px;
+            margin: 5px 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="full-red-strip">
+        <span class="card-text">Card 1</span>
+        <span class="card-text">Card 2</span>
+        <span class="card-text">Card 3</span>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.card-text'); 
+
+        // 1. **ตัวอย่างที่ 1: แสดงข้อความของแต่ละ Card (แบบเรียบง่าย)**
+        cards.forEach(card => {
+            console.log(card.textContent); // แสดงเฉพาะข้อความ "Card 1", "Card 2", "Card 3"
+        });
+
+        // 2. **ตัวอย่างที่ 2: แสดงจำนวนของ Card (แบบเรียบง่าย)**
+        console.log("Total cards found: " + cards.length); // แสดง String "Total cards found: 3"
+
+        // 3. **ตัวอย่างที่ 3: แปลง NodeList เป็น Array ของ Strings แล้วแสดง (ดูเรียบง่ายขึ้น)**
+        const cardTexts = Array.from(cards).map(card => card.textContent);
+        console.log(cardTexts.join(', ')); // แสดง "Card 1, Card 2, Card 3" เป็น String เดียว
+        
+        // ถ้าอยากให้แสดงเป็น Array ที่ไม่มีการขยายแบบ Object มากนัก
+        // console.log(cardTexts); // อันนี้ก็ยังเป็น Object Array แต่แสดงผลอาจจะกระชับกว่า NodeList นิดหน่อย
+    </script>
+</body>
+</html>
