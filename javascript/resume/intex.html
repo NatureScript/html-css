@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ชื่อของคุณ - เรซูเม่</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            /* Color Palette for Cream, White, Brown */
+            --header-bg: #d1bfa7; /* Light brown for header */
+            --header-text: #ffffff;
+            --main-bg: #fdfaf7; /* Cream background */
+            --card-bg: #ffffff; /* White card background */
+            --primary-accent: #8b5a2b; /* Darker brown for accents */
+            --text-color: #333;
+            --light-text-color: #666;
+            --border-color: #e0e0e0;
+            --timeline-line: #d1bfa7; /* Light brown for timeline line */
+            --timeline-dot: #8b5a2b; /* Dark brown for timeline dots */
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--main-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .resume-container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--card-bg); /* Main content background */
+        }
+
+        /* Header Section */
+        .header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        .header p {
+            margin: 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons a {
+            color: var(--header-text);
+            font-size: 1.2em;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .social-icons a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section (Image and Contact Info) */
+        .hero-section {
+            background-color: var(--primary-accent); /* Greenish color in original image */
+            padding: 50px 40px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            color: white; /* Text on this section is white */
+        }
+        .profile-pic {
+            flex-shrink: 0;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid rgba(255, 255, 255, 0.5); /* Semi-transparent border */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .intro-text {
+            flex-grow: 1;
+        }
+        .intro-text h2 {
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .intro-text p {
+            font-size: 1.2em;
+            margin: 0;
+            opacity: 0.9;
+        }
+        .contact-details {
+            flex-shrink: 0;
+            background-color: var(--card-bg); /* White background for contact details */
+            color: var(--text-color);
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .contact-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .contact-details li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        .contact-details li:last-child {
+            margin-bottom: 0;
+        }
+        .contact-details li span:first-child {
+            font-weight: 600;
+            color: var(--light-text-color);
+        }
+        .contact-details li a {
+            color: var(--primary-accent);
+            text-decoration: none;
+        }
+        .contact-details li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content Grid */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Two columns like original image */
+            gap: 40px;
+            padding: 40px;
+            background-color: var(--card-bg); /* White background for main content */
+        }
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Section Styling */
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            color: var(--primary-accent);
+            margin-bottom: 30px;
+            font-weight: 600;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--light-brown);
+        }
+
+        .section-box {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Skills Section */
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-color);
+            flex-basis: 70%;
+        }
+        .skill-bar {
+            background-color: var(--border-color);
+            height: 8px;
+            border-radius: 4px;
+            flex-grow: 1;
+            margin-left: 10px;
+            position: relative;
+        }
+        .skill-level {
+            height: 100%;
+            background-color: var(--primary-accent);
+            border-radius: 4px;
+        }
+        .skill-percentage {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            margin-left: 10px;
+            flex-basis: 15%;
+            text-align: right;
+        }
+
+        /* Experience/About Text */
+        .about-text {
+            color: var(--light-text-color);
+            font-size: 1em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Timeline Section (บันไดการพัฒนาตนเอง) */
+        .timeline {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%; /* Center the line */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--timeline-line);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background-color: var(--timeline-dot);
+            border-radius: 50%;
+            border: 2px solid var(--card-bg); /* To make it pop out of the line */
+            z-index: 1;
+        }
+        .timeline-content {
+            background-color: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            width: calc(50% - 25px); /* Half width minus gap for line/dot */
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            left: 0;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            right: 0;
+            text-align: left;
+        }
+        .timeline-content h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.15em;
+            color: var(--primary-accent);
+            font-weight: 600;
+        }
+        .timeline-content p {
+            margin: 0;
+            font-size: 0.9em;
+            color: var(--light-text-color);
+        }
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary-accent);
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header, .hero-section, .main-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .hero-section {
+                padding: 30px 20px;
+            }
+            .profile-pic {
+                margin-bottom: 20px;
+            }
+            .contact-details {
+                width: 100%;
+                box-sizing: border-box; /* Include padding in width */
+            }
+            .contact-details ul {
+                text-align: left;
+            }
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .section-title {
+                margin-bottom: 20px;
+            }
+            .section-title::after {
+                bottom: -5px;
+            }
+            .timeline::before {
+                left: 10px; /* Adjust line for smaller screens */
+                transform: translateX(0);
+            }
+            .timeline-item {
+                flex-direction: column;
+                margin-bottom: 20px;
+                padding-left: 20px;
+            }
+            .timeline-item::before {
+                left: 4px; /* Adjust dot for smaller screens */
+                transform: translateX(0);
+                top: 5px;
+            }
+            .timeline-content {
+                width: 100%;
+                text-align: left !important; /* Force left alignment */
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <div>
+                <h1>JOHN DOE</h1>
+                <p>Software Engineer</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
+            </div>
+        </div>
+
+        <div class="hero-section">
+            <div class="profile-pic">
+                <img src="https://via.placeholder.com/150/d1bfa7/8b5a2b?text=Your+Pic" alt="Profile Picture">
+                </div>
+            <div class="intro-text">
+                <h2>Hello & Welcome <br> I'M JOHN DOE</h2>
+                <p>Software Engineer & Coffee Addict</p>
+            </div>
+            <div class="contact-details">
+                <ul>
+                    <li><span>Age</span> <span>25</span></li>
+                    <li><span>Address</span> <span>1234 Street, W3 Island</span></li>
+                    <li><span>Email</span> <span><a href="mailto:contact@domain.com">contact@domain.com</a></span></li>
+                    <li><span>Phone</span> <span>0123 456 789</span></li>
+                    <li><span>Website</span> <span><a href="http://www.envato.com" target="_blank">http://www.envato.com</a></span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="background-color: var(--primary-accent); padding: 15px 40px; text-align: center;">
+            <div class="social-icons" style="justify-content: center; gap: 25px;">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section-title">SKILLS</div>
+                <div class="section-box">
+                    <p class="about-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <ul class="skills-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Front-End Development</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 90%;"></div></div>
+                            <span class="skill-percentage">90%</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Back-End Development</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 85%;"></div></div>
+                            <span class="skill-percentage">85%</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Mobile App Development</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 75%;"></div></div>
+                            <span class="skill-percentage">75%</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Desktop Development</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 80%;"></div></div>
+                            <span class="skill-percentage">80%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <i class="fas fa-cog" style="font-size: 2em; color: var(--light-text-color);"></i>
+                </div>
+            </div>
+        </div>
+
+        <div style="padding: 40px; background-color: var(--main-bg);">
+            <div class="section-title">บันไดการพัฒนาตนเอง / อบรมเรียนรู้ที่ผ่านมา</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>การรับรองด้าน Machine Learning</h3>
+                        <p>INSTITUTE OF CREATIVITY</p>
+                        <span class="timeline-date">2011-2012</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>การรับรองด้าน Data Analysis</h3>
+                        <p>INSTITUTE OF COOLNESS</p>
+                        <span class="timeline-date">2012-2013</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>การรับรองด้าน Cyber Security</h3>
+                        <p>INSTITUTE OF AWESOMENESS</p>
+                        <span class="timeline-date">2013-2014</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>การรับรองด้าน Big Data</h3>
+                        <p>INSTITUTE OF COOLNESS</p>
+                        <span class="timeline-date">2014-2015</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>ระดับปริญญาตรี - วิทยาการคอมพิวเตอร์</h3>
+                        <p>มหาวิทยาลัยแห่งความยอดเยี่ยม</p>
+                        <span class="timeline-date">2006-2010</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>ระดับปริญญาโท - วิทยาการคอมพิวเตอร์</h3>
+                        <p>มหาวิทยาลัยแห่งความยอดเยี่ยม</p>
+                        <span class="timeline-date">2010-2011</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
